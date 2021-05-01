@@ -15,11 +15,10 @@ class CardMovie extends StatelessWidget {
       width: 250,
       margin: EdgeInsets.all(15),
       decoration: BoxDecoration(
-        color: Colors.amber,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black45,
+            color: Colors.black,
             offset: const Offset(0.0, 6.0),
             blurRadius: 10,
             spreadRadius: 0.0,

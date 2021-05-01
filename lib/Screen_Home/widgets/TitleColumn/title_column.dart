@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_desafio/core/app_colors.dart';
 
 class TitleColumn extends StatelessWidget {
   final String title;
@@ -17,9 +18,9 @@ class TitleColumn extends StatelessWidget {
       child: Text(
             title,
             style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-              color: Colors.teal,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+              color: AppColors.white,
             ),),
     );
   }

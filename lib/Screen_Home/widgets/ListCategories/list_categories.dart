@@ -40,7 +40,7 @@ class ListCategories extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black38,
+                        color: Colors.black,
                         offset: const Offset(0.0, 6.0),
                         blurRadius: 10,
                         spreadRadius: 0.0,

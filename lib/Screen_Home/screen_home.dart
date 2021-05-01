@@ -8,6 +8,7 @@ import 'package:movie_desafio/Screen_Home/JsonType/movies.dart';
 import 'package:movie_desafio/Screen_Home/widgets/ListCategories/list_categories.dart';
 import 'package:movie_desafio/Screen_Home/widgets/ListMovies/list_movies.dart';
 import 'package:movie_desafio/Screen_Home/widgets/card_movies.dart';
+import 'package:movie_desafio/core/app_colors.dart';
 
 class ScreenHome extends StatelessWidget {
   final  HomeController controller = HomeController();
@@ -19,6 +20,7 @@ class ScreenHome extends StatelessWidget {
     return Scaffold(
         appBar: AppBartWidget(),
         body: Container(
+          color: AppColors.backgorund,
           height: MediaQuery.of(context).size.height,
           child: DraggableScrollableSheet(
               initialChildSize: 1,

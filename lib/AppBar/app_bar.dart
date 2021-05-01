@@ -1,22 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:movie_desafio/core/app_colors.dart';
 
 class AppBartWidget extends PreferredSize {
   @override
-   AppBartWidget() : super(
-    preferredSize: Size.fromHeight(250),
-    child:  SafeArea(
-      child: Container(
-        height: 80,
-        color: Colors.white24,
-        padding: EdgeInsets.symmetric(horizontal: 25),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children:[
-            Text("Movies"),
-            Icon(Icons.search),
-          ]
-        ),
-      ),
-    ),
-  );
+  AppBartWidget()
+      : super(
+          preferredSize: Size.fromHeight(250),
+          child: Container(
+            color: AppColors.backgorund,
+            child: SafeArea(
+              child: Container(
+                height: 80,
+                padding: EdgeInsets.symmetric(horizontal: 25),
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Text.rich(
+                    TextSpan(
+                        text: "Cubos",
+                        style: TextStyle(color: AppColors.white, fontSize: 28),
+                        children: [
+                          TextSpan(
+                              text: "Movies",
+                              style: TextStyle(
+                                  color: AppColors.lightPink,
+                                  decoration: TextDecoration.underline,
+                                  fontSize: 28)),
+                        ]),
+                  ),
+                ]),
+              ),
+            ),
+          ),
+        );
 }
