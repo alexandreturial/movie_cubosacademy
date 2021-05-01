@@ -1,5 +1,5 @@
 class Movies{
-
+ 
   List<Movie> movies;
 
   Movies.fromJson(Map<String, dynamic> json){
