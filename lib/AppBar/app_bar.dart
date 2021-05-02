@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_desafio/core/app_colors.dart';
+import 'package:movie_desafio/core/app_textstyle.dart';
 
 class AppBartWidget extends PreferredSize {
   @override
@@ -17,14 +18,12 @@ class AppBartWidget extends PreferredSize {
                   Text.rich(
                     TextSpan(
                         text: "Cubos",
-                        style: TextStyle(color: AppColors.white, fontSize: 28),
+                        style: AppTextStyles.logo,
                         children: [
                           TextSpan(
-                              text: "Movies",
-                              style: TextStyle(
-                                  color: AppColors.lightPink,
-                                  decoration: TextDecoration.underline,
-                                  fontSize: 28)),
+                            text: "Movies",
+                            style: AppTextStyles.logoPink,
+                          ),
                         ]),
                   ),
                 ]),
