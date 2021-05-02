@@ -1,7 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:movie_desafio/core/app_colors.dart';
+import 'package:movie_desafio/Screen_Detail/widgets/back_button.dart';
+import 'package:movie_desafio/Screen_Detail/widgets/back_poster.dart';
+import 'package:movie_desafio/Screen_Detail/widgets/descrition.dart';
+import 'package:movie_desafio/Screen_Detail/widgets/title_movie.dart';
+import 'package:movie_desafio/core/app_textstyle.dart';
 
 class ScreenDetail extends StatelessWidget {
   @override
@@ -10,53 +14,34 @@ class ScreenDetail extends StatelessWidget {
     double _sigmaY = 1.0; // from 0-10
     
     return Stack(children: [
-      Container(
-        height: MediaQuery.of(context).size.height,
-        child: Container(
-          child: Image.network(
-            "https://image.tmdb.org/t/p/original/9yBVqNruk6Ykrwc32qrK2TIE5xw.jpg",
-            fit: BoxFit.fitHeight,
-          ),
-        ),
+      BackPoster(
+        image: "https://image.tmdb.org/t/p/original/9yBVqNruk6Ykrwc32qrK2TIE5xw.jpg",
       ),
       SafeArea(
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: _sigmaX, sigmaY: _sigmaY),
-          
           child: Container(
             padding: EdgeInsets.all(15),
-          color: Colors.black.withOpacity(0.4),
+            color: Colors.black.withOpacity(0.4),
             child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-               Text(
-                "KONG vs GOZILLA",
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                    decoration: TextDecoration.none),
+              TitleMovie(
+                title: "KONG vs GOZILLA",
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    child: Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.white,
+              Container(
+                height: 100,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Description(
+                      about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
                     ),
-                    onTap: () => Navigator.pop(context),
-                  ),
-                  Text(
-                    "KONG vs GOZILLA",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                        decoration: TextDecoration.none),
-                  ),
-                  
-                ],
+                    BackButtonWidget()
+                    
+                  ],
+                ),
               ),
              
             ],
