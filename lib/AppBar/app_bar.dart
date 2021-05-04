@@ -6,12 +6,12 @@ class AppBartWidget extends PreferredSize {
   @override
   AppBartWidget()
       : super(
-          preferredSize: Size.fromHeight(250),
+          preferredSize: Size.fromHeight(200),
           child: Container(
             color: AppColors.backgorund,
             child: SafeArea(
               child: Container(
-                height: 80,
+                height: 70,
                 padding: EdgeInsets.symmetric(horizontal: 25),
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [

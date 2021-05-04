@@ -1,8 +1,8 @@
-class Movies{
+class MoviesByCategories{
  
   List<Movie> movies;
 
-  Movies.fromJson(Map<String, dynamic> json){
+  MoviesByCategories.fromJson(Map<String, dynamic> json){
 
   var movieList = json['results'] as List;
 

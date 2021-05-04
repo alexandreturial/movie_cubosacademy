@@ -30,6 +30,7 @@ class ListMovies extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return CardMovie(
                     image: movies[index].image,
+                    id: movies[index].id,
                   );
                 }),
           ),

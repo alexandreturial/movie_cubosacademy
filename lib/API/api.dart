@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:movie_desafio/Screen_By_Genres.dart/JsonType/movies.dart';
+import 'package:movie_desafio/Screen_Detail/JsonType/movie_detail.dart';
 import 'package:movie_desafio/Screen_Home/JsonType/genres.dart';
 
 import 'package:movie_desafio/Screen_Home/JsonType/movies.dart';
@@ -8,7 +10,7 @@ import 'package:movie_desafio/Screen_Home/JsonType/movies.dart';
 class API{
   var authority = 'api.themoviedb.org';
   var queryParameters = {
-  'api_key': 'a5bc05fb630c9b7fdc560033345fa13e'
+  'api_key': 'a5bc05fb630c9b7fdc560033345fa13e',
   };
 
 
@@ -27,13 +29,47 @@ class API{
   }
 
   Future<Genres> fetchGenres() async {
-
+    fetchMovieByGenres();
     final response = await http.get(
       Uri.https(authority, '3/genre/movie/list', queryParameters)
     );
     if(response.statusCode == 200){
      
       return Genres.fromJson(jsonDecode(response.body));
+    }else{
+      return Future.error('categories not found');
+    }
+  }
+
+  Future<MoviesDetail> fetchMovieDetail(int id) async {
+    final response = await http.get(
+      Uri.https(authority, '3/movie/$id', queryParameters)
+    );
+    if(response.statusCode == 200){
+     
+      return MoviesDetail.fromJson(jsonDecode(response.body));
+    }else{
+      return Future.error('categories not found');
+    }
+  }
+
+  Future<MoviesByCategories> fetchMovieByGenres() async {
+    var queryParametersGenres = {
+      'api_key': 'a5bc05fb630c9b7fdc560033345fa13e',
+      'language':'en-US',
+      'include_adult':'false',
+      'include_video':'false',
+      'page':'1',
+      'with_genres':'18',
+    };
+
+    final response = await http.get(
+      Uri.https(authority, '3/discover/movie', queryParametersGenres)
+    );
+    
+    if(response.statusCode == 200){
+     
+      return MoviesByCategories.fromJson(jsonDecode(response.body));
     }else{
       return Future.error('categories not found');
     }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movie_desafio/Screen_Home/JsonType/genres.dart';
+import 'package:movie_desafio/Screen_Home/widgets/CardCategoies/card_categoires.dart';
 import 'package:movie_desafio/Screen_Home/widgets/TitleColumn/title_column.dart';
-import 'package:movie_desafio/Screen_Home/widgets/card_movies.dart';
 
 class ListCategories extends StatelessWidget {
-   List<Genre> genres;
+  final List<Genre> genres;
 
   ListCategories({
     Key key,
@@ -28,27 +28,10 @@ class ListCategories extends StatelessWidget {
                 crossAxisCount: 2,
                 crossAxisSpacing: 15,
                 mainAxisSpacing: 15,
-                
               ),
               itemCount: genres.length,
               itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  alignment: Alignment.center,
-                  
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black,
-                        offset: const Offset(0.0, 6.0),
-                        blurRadius: 10,
-                        spreadRadius: 0.0,
-                      ), //BoxShadow//BoxShadow
-                    ],
-                  ),
-                  child:Text(genres[index].name)
-                );
+                return CardCategories(name: genres[index].name);
               }),
           ),
         ],

@@ -3,10 +3,11 @@ import 'package:movie_desafio/Screen_Detail/screen_detail.dart';
 
 class CardMovie extends StatelessWidget {
   final String image;
-
+  final int id;
   CardMovie({
     Key key,
-    this.image,
+    this.image, 
+    this.id,
   }) : super(key: key);
 
   @override
@@ -28,12 +29,17 @@ class CardMovie extends StatelessWidget {
       child: GestureDetector(
           onTap: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ScreenDetail()));
+                MaterialPageRoute(
+                  builder: (context) => ScreenDetail(
+                    id: id,
+                  )
+                )
+              );
           },
           child: ClipRRect(
              borderRadius: BorderRadius.circular(20),
             child: Image.network(
-              'https://image.tmdb.org/t/p/w300/$image',
+              'https://image.tmdb.org/t/p/original/$image',
               fit: BoxFit.fitHeight,
               
             ),

@@ -11,10 +11,18 @@ class Description extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Text(
-        about,
-        style: AppTextStyles.body,
-      ),
+      child: Text.rich(
+        TextSpan(
+          text: about.substring(0, 1), 
+          style:AppTextStyles.bodyBoldPink, 
+          children: [
+          TextSpan(
+            text: about.substring(1),
+            style: AppTextStyles.body15,
+          ),
+        ]),
+      )
+,
     );
   }
 }

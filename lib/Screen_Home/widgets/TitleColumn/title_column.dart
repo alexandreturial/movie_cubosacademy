@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movie_desafio/core/app_colors.dart';
 import 'package:movie_desafio/core/app_textstyle.dart';
 
 class TitleColumn extends StatelessWidget {
@@ -15,7 +14,7 @@ class TitleColumn extends StatelessWidget {
       child: Text.rich(
         TextSpan(
           text: title.substring(0, 1), style: 
-          AppTextStyles.bodyBoldPink, 
+          AppTextStyles.bodyBoldPink25, 
           children: [
           TextSpan(
             text:title.substring(1),

@@ -8,7 +8,6 @@ class AppColors {
   static final Color lightPink = Color(0xFFDA0175);
   static final Color border = Color(0xFFE1E1E6);
   static final Color backgorund = Color(0xFF090A0E);
-  static final Color chartPrimary = darkGreen;
 
   //Greens
   static final Color lightGreen = Color(0xFFE1F5EC);

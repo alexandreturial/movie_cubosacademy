@@ -8,6 +8,7 @@ class BackButtonWidget extends StatelessWidget {
       child: Icon(
         Icons.arrow_back_rounded,
         color: AppColors.lightPink,
+        size: 35,
       ),
       onTap: () => Navigator.pop(context),
     );

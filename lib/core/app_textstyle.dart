@@ -18,9 +18,9 @@ class AppTextStyles {
     decoration: TextDecoration.none
   );
 
-  static final TextStyle title40 = GoogleFonts.poppins(
+  static final TextStyle title25 = GoogleFonts.poppins(
     color: AppColors.white,
-    fontSize: 30,
+    fontSize: 25,
     fontWeight: FontWeight.w600,
     decoration: TextDecoration.none
   );
@@ -51,18 +51,26 @@ class AppTextStyles {
     color: AppColors.white,
     decoration: TextDecoration.none,
   );
-
   static final TextStyle bodyBoldPink = GoogleFonts.poppins(
     fontSize: 20,
     fontWeight: FontWeight.bold,
     color: AppColors.lightPink,
     decoration: TextDecoration.underline,
+    decorationColor: AppColors.lightPink,
   );
 
-  static final TextStyle body20 = GoogleFonts.poppins(
-    color: AppColors.grey,
-    fontSize: 20,
-    fontWeight: FontWeight.normal,
+  static final TextStyle bodyBoldPink25 = GoogleFonts.poppins(
+    fontSize: 25,
+    fontWeight: FontWeight.bold,
+    color: AppColors.lightPink,
+    decoration: TextDecoration.underline,
+    decorationColor: AppColors.lightPink,
   );
-  
+
+  static final TextStyle body15 = GoogleFonts.poppins(
+    color: AppColors.white,
+    fontSize: 15,
+    fontWeight: FontWeight.normal,
+    decoration: TextDecoration.none,
+  );
 }
