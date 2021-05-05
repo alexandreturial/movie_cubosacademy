@@ -59,6 +59,13 @@ class AppTextStyles {
     decorationColor: AppColors.lightPink,
   );
 
+  static final TextStyle bodyBoldPinkUndecoration = GoogleFonts.poppins(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    color: AppColors.lightPink,
+    decoration: TextDecoration.none,
+  );
+
   static final TextStyle bodyBoldPink25 = GoogleFonts.poppins(
     fontSize: 25,
     fontWeight: FontWeight.bold,

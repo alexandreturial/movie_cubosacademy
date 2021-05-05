@@ -2,12 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_desafio/AppBar/app_bar.dart';
+import 'package:movie_desafio/NavigationBar/navigation_bar.dart';
 import 'package:movie_desafio/Screen_Home/Controller/controller.dart';
 import 'package:movie_desafio/Screen_Home/JsonType/genres.dart';
 import 'package:movie_desafio/Screen_Home/JsonType/movies.dart';
 import 'package:movie_desafio/Screen_Home/widgets/ListCategories/list_categories.dart';
 import 'package:movie_desafio/Screen_Home/widgets/ListMovies/list_movies.dart';
 import 'package:movie_desafio/core/app_colors.dart';
+import 'package:movie_desafio/core/app_textstyle.dart';
 
 class ScreenHome extends StatelessWidget {
   final  HomeController controller = HomeController();
@@ -17,8 +19,8 @@ class ScreenHome extends StatelessWidget {
     controller.loadScreenData();
 
     return Scaffold(
-        appBar: AppBartWidget(),
         body: Container(
+          padding: EdgeInsets.only(bottom: 5),
           color: AppColors.backgorund,
           height: MediaQuery.of(context).size.height,
           child: DraggableScrollableSheet(
@@ -32,6 +34,7 @@ class ScreenHome extends StatelessWidget {
                         dragStartBehavior: DragStartBehavior.start,
                         child: Column(
                           children: [
+                            AppBartWidget(),
                             FutureBuilder<Movies>(
                               future: controller.movies,
                               builder: (context, snapShot) {
@@ -60,6 +63,8 @@ class ScreenHome extends StatelessWidget {
                         ),
                       );
               }),
-        ));
+        ),
+        bottomNavigationBar: NavigationBar()
+        );
   }
 }

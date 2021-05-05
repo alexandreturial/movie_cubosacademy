@@ -22,16 +22,20 @@ class ListCategories extends StatelessWidget {
             title: "Categories",
           ),
           Container(
-            height: 400,
+            height: 300,
             child: GridView.builder(
                gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 15,
                 mainAxisSpacing: 15,
+                
               ),
+              scrollDirection: Axis.horizontal,
               itemCount: genres.length,
               itemBuilder: (BuildContext context, int index) {
-                return CardCategories(name: genres[index].name);
+                return CardCategories(
+                  name: genres[index].name,
+                  id: genres[index].id);
               }),
           ),
         ],

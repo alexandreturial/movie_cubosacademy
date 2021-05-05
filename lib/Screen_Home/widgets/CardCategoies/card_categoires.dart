@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:movie_desafio/Screen_By_Genres.dart/screen_list.dart';
 import 'package:movie_desafio/Utils/get_color.dart';
 import 'package:movie_desafio/core/app_colors.dart';
 import 'package:movie_desafio/core/app_textstyle.dart';
 
+import '../../../Screen_By_Genres.dart/screen_list.dart';
+
 class CardCategories extends StatelessWidget {
   final String name;
+  final int id;
+  
   CardCategories({
     Key key, 
-    this.name
+    this.name, 
+    this.id
   }):super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -16,11 +20,14 @@ class CardCategories extends StatelessWidget {
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(
-                  builder: (context) => ScreenListMovies()
+                  builder: (context) => ScreenListMovies(
+                    id: id,
+                  )
                 )
               );
           },
           child: Container(
+          
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: ColorGenres.getColorType(type: name),

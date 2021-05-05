@@ -1,11 +1,12 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:movie_desafio/Screen_By_Genres.dart/JsonType/movies.dart';
 import 'package:movie_desafio/Screen_Detail/JsonType/movie_detail.dart';
 import 'package:movie_desafio/Screen_Home/JsonType/genres.dart';
 
 import 'package:movie_desafio/Screen_Home/JsonType/movies.dart';
+
+import '../Screen_By_Genres.dart/JsonType/movies.dart';
 
 class API{
   var authority = 'api.themoviedb.org';
@@ -29,7 +30,6 @@ class API{
   }
 
   Future<Genres> fetchGenres() async {
-    fetchMovieByGenres();
     final response = await http.get(
       Uri.https(authority, '3/genre/movie/list', queryParameters)
     );
@@ -53,14 +53,14 @@ class API{
     }
   }
 
-  Future<MoviesByCategories> fetchMovieByGenres() async {
+  Future<MoviesByCategories> fetchMovieByGenres(int id) async {
     var queryParametersGenres = {
       'api_key': 'a5bc05fb630c9b7fdc560033345fa13e',
       'language':'en-US',
       'include_adult':'false',
       'include_video':'false',
       'page':'1',
-      'with_genres':'18',
+      'with_genres':'$id',
     };
 
     final response = await http.get(

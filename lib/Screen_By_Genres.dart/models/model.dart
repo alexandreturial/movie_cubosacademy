@@ -1,13 +1,24 @@
 import 'package:movie_desafio/API/api.dart';
-import 'package:movie_desafio/Screen_By_Genres.dart/JsonType/movies.dart';
+
+import '../JsonType/movies.dart';
 
 class ListMoviesModel{
   Future<MoviesByCategories> _movies;
+  int pageNumber = 0;
+
 
   Future<MoviesByCategories> get movies => _movies;
   
-  fetchMoveis(){
-    _movies  = API().fetchMovieByGenres();
+  fetchMoveis(int id){
+    _movies  = API().fetchMovieByGenres(id);
+  }
+
+  nextPage(){
+    pageNumber++;
+  }
+
+  previousPage(){
+    pageNumber--;
   }
 
 }
