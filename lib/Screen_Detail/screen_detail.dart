@@ -8,7 +8,6 @@ import 'package:movie_desafio/Screen_Detail/widgets/back_poster.dart';
 import 'package:movie_desafio/Screen_Detail/widgets/descrition.dart';
 import 'package:movie_desafio/Screen_Detail/widgets/sub_title.dart';
 import 'package:movie_desafio/Screen_Detail/widgets/title_movie.dart';
-import 'package:movie_desafio/core/app_textstyle.dart';
 
 class ScreenDetail extends StatelessWidget {
   final int id;

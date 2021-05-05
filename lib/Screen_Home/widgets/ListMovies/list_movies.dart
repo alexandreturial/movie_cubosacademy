@@ -5,7 +5,7 @@ import 'package:movie_desafio/Screen_Home/widgets/TitleColumn/title_column.dart'
 import 'package:movie_desafio/Screen_Home/widgets/card_movies.dart';
 
 class ListMovies extends StatelessWidget {
-  List<Movie> movies;
+  final List<Movie> movies;
 
   ListMovies({
     Key key,

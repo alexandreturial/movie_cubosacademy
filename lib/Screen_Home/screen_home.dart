@@ -7,7 +7,6 @@ import 'package:movie_desafio/Screen_Home/JsonType/genres.dart';
 import 'package:movie_desafio/Screen_Home/JsonType/movies.dart';
 import 'package:movie_desafio/Screen_Home/widgets/ListCategories/list_categories.dart';
 import 'package:movie_desafio/Screen_Home/widgets/ListMovies/list_movies.dart';
-import 'package:movie_desafio/Screen_Home/widgets/card_movies.dart';
 import 'package:movie_desafio/core/app_colors.dart';
 
 class ScreenHome extends StatelessWidget {
