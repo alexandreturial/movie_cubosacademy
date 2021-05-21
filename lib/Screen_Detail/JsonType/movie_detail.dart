@@ -1,10 +1,19 @@
-class MoviesDetail{
+class MoviesDetail {
   int id;
   String title;
   String date;
   String overview;
   String image;
   List<Genre> genres;
+
+  MoviesDetail(
+    this.id,
+    this.title,
+    this.date,
+    this.overview,
+    this.image,
+    this.genres,
+  );
 
   MoviesDetail.fromJson(Map<String, dynamic> json){
     id = json['id'];
@@ -21,9 +30,14 @@ class MoviesDetail{
     }
 }
 
-class Genre{
+class Genre {
   int id;
   String name; 
+
+  Genre(
+    this.id,
+    this.name,
+  );
 
   Genre.fromJson(Map<String, dynamic> json){
     id = json['id'];

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
-
-import '../JsonType/movies.dart';
+import 'package:movie_desafio/core/JsonType/movies.dart';
 import '../models/model.dart';
 
 
@@ -8,7 +7,7 @@ class ListMoviesController {
   final homeData = ListMoviesModel();
   PageController pageController = PageController(initialPage: 0);
   
-  Future<MoviesByCategories> get movies => homeData.movies;
+  Future<Movies> get movies => homeData.movies;
 
   loadScreenData(int id){
     homeData.fetchMoveis(id);

@@ -3,20 +3,19 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:movie_desafio/Screen_Detail/JsonType/movie_detail.dart';
 import 'package:movie_desafio/Screen_Home/JsonType/genres.dart';
-
-import 'package:movie_desafio/Screen_Home/JsonType/movies.dart';
-
-import '../Screen_By_Genres.dart/JsonType/movies.dart';
+import 'package:movie_desafio/core/JsonType/movies.dart';
 
 class API{
-  var authority = 'api.themoviedb.org';
-  var queryParameters = {
-  'api_key': 'a5bc05fb630c9b7fdc560033345fa13e',
-  };
+  final String authority = 'api.themoviedb.org';
+  static const queryParameters = {
+    'api_key': 'a5bc05fb630c9b7fdc560033345fa13e',
+    } ;
+
+  const API();
 
 
   Future<Movies> fetchMovie() async {
-
+    
     final response = await http.get(
       Uri.https(authority, '/3/movie/upcoming', queryParameters)
     );
@@ -53,7 +52,7 @@ class API{
     }
   }
 
-  Future<MoviesByCategories> fetchMovieByGenres(int id) async {
+  Future<Movies> fetchMovieByGenres(int id) async {
     var queryParametersGenres = {
       'api_key': 'a5bc05fb630c9b7fdc560033345fa13e',
       'language':'en-US',
@@ -69,7 +68,7 @@ class API{
     
     if(response.statusCode == 200){
      
-      return MoviesByCategories.fromJson(jsonDecode(response.body));
+      return Movies.fromJson(jsonDecode(response.body));
     }else{
       return Future.error('categories not found');
     }

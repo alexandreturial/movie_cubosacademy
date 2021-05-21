@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_desafio/Screen_By_Genres.dart/widgets/icon_action.dart';
 import 'package:movie_desafio/Screen_By_Genres.dart/widgets/navegation_button.dart';
+import 'package:movie_desafio/core/JsonType/movies.dart';
 import 'Controller/controller.dart';
-import 'JsonType/movies.dart';
 import 'widgets/back_poster.dart';
 import 'widgets/title_movie.dart';
 
@@ -23,7 +23,7 @@ class ScreenListMovies extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           controller: listmovies.pageController,
           itemBuilder: (context, position) {
-            return FutureBuilder<MoviesByCategories>(
+            return FutureBuilder<Movies>(
                 future: listmovies.movies,
                 builder: (context, snapShot) {
                   if (snapShot.hasData) {

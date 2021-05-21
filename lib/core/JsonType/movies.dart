@@ -1,6 +1,7 @@
 class Movies{
  
   List<Movie> movies;
+  Movies(this.movies);
 
   Movies.fromJson(Map<String, dynamic> json){
 
@@ -12,10 +13,16 @@ class Movies{
   }
 
 }
-class Movie {
+class Movie{
   int id;
   String title;
   String image;
+
+  Movie(
+    this.id,
+    this.title,
+    this.image,
+  );
 
   Movie.fromJson(Map<String, dynamic> json){
     id = json['id'];

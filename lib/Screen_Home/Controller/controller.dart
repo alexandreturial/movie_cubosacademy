@@ -1,6 +1,6 @@
 import 'package:movie_desafio/Screen_Home/JsonType/genres.dart';
 import 'package:movie_desafio/Screen_Home/models/model.dart';
-import 'package:movie_desafio/Screen_Home/JsonType/movies.dart';
+import 'package:movie_desafio/core/JsonType/movies.dart';
 
 
 class HomeController {

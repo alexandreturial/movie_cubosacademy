@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:movie_desafio/Screen_Home/JsonType/movies.dart';
 import 'package:movie_desafio/Screen_Home/widgets/TitleColumn/title_column.dart';
 import 'package:movie_desafio/Screen_Home/widgets/card_movies.dart';
+import 'package:movie_desafio/core/JsonType/movies.dart';
 
 class ListMovies extends StatelessWidget {
   final List<Movie> movies;

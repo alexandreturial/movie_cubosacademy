@@ -5,11 +5,10 @@ import 'package:movie_desafio/AppBar/app_bar.dart';
 import 'package:movie_desafio/NavigationBar/navigation_bar.dart';
 import 'package:movie_desafio/Screen_Home/Controller/controller.dart';
 import 'package:movie_desafio/Screen_Home/JsonType/genres.dart';
-import 'package:movie_desafio/Screen_Home/JsonType/movies.dart';
 import 'package:movie_desafio/Screen_Home/widgets/ListCategories/list_categories.dart';
 import 'package:movie_desafio/Screen_Home/widgets/ListMovies/list_movies.dart';
+import 'package:movie_desafio/core/JsonType/movies.dart';
 import 'package:movie_desafio/core/app_colors.dart';
-import 'package:movie_desafio/core/app_textstyle.dart';
 
 class ScreenHome extends StatelessWidget {
   final  HomeController controller = HomeController();
