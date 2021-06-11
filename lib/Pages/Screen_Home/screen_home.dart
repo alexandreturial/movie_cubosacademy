@@ -38,7 +38,7 @@ class ScreenHome extends StatelessWidget {
                               stream: controller.moviesStream.stream,
                               builder: (context, snapShot) {
                                 if(snapShot.connectionState != ConnectionState.active){
-                                  return CircularProgressIndicator();
+                                  return Text('asdas');
                                 }
                                 if (snapShot.hasData) {
                                   return   ListMovies(movies: snapShot.data!.movies);
