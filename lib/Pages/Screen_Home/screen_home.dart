@@ -1,8 +1,8 @@
+import 'package:desafio_2/Common/AppBar/app_bar.dart';
+import 'package:desafio_2/Common/NavigationBar/navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:desafio_2/AppBar/app_bar.dart';
-import 'package:desafio_2/NavigationBar/navigation_bar.dart';
 import 'package:desafio_2/Pages/Screen_Home/Controller/controller.dart';
 import 'package:desafio_2/Pages/Screen_Home/JsonType/genres.dart';
 import 'package:desafio_2/Pages/Screen_Home/widgets/ListCategories/list_categories.dart';
@@ -11,7 +11,7 @@ import 'package:desafio_2/core/JsonType/movies.dart';
 import 'package:desafio_2/core/app_colors.dart';
 
 class ScreenHome extends StatelessWidget {
-  final  HomeController controller = HomeController();
+  final HomeViewModel controller = HomeViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +38,13 @@ class ScreenHome extends StatelessWidget {
                               stream: controller.moviesStream.stream,
                               builder: (context, snapShot) {
                                 if(snapShot.connectionState != ConnectionState.active){
-                                  return Text('asdas');
+                                  return CircularProgressIndicator();
                                 }
                                 if (snapShot.hasData) {
-                                  return   ListMovies(movies: snapShot.data!.movies);
+                                  return ListMovies(
+                                    movies: snapShot.data!.movies!,
+                                    controller: controller,
+                                  );
                                 }else if (snapShot.hasError) {
                                   return Text('snapShot.error');
                                 } else {

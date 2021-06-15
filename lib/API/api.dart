@@ -9,19 +9,22 @@ class API{
   final String authority = 'api.themoviedb.org';
   static const queryParameters = {
     'api_key': 'a5bc05fb630c9b7fdc560033345fa13e',
-    } ;
+    };
 
   const API();
+  
 
+  Future<Movies> fetchMovie(int page) async {
+    var queryParameters = {
+    'api_key': 'a5bc05fb630c9b7fdc560033345fa13e',
+    'page': '$page'
+    } ;
 
-  Future<Movies> fetchMovie() async {
-    
     final response = await http.get(
       Uri.https(authority, '/3/movie/upcoming', queryParameters)
     );
     
     if(response.statusCode == 200){
-     
       return Movies.fromJson(jsonDecode(response.body));
     }else{
       return Future.error('movie not found');
@@ -52,13 +55,13 @@ class API{
     }
   }
 
-  Future<Movies> fetchMovieByGenres(int id) async {
+  Future<Movies> fetchMovieByGenres(int id, int page) async {
     var queryParametersGenres = {
       'api_key': 'a5bc05fb630c9b7fdc560033345fa13e',
       'language':'en-US',
       'include_adult':'false',
       'include_video':'false',
-      'page':'1',
+      'page':'$page',
       'with_genres':'$id',
     };
 

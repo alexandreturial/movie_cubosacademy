@@ -3,12 +3,17 @@ import 'package:desafio_2/Pages/Screen_Detail/models/movie_detail.dart';
 
 
 class MovieDetailController{
-  final detailData = MovieDetailMdoel();
+  final _detailData = MovieDetailMdoel();
 
-  Future<MoviesDetail>? get movie => detailData.movie;
+  Future<MoviesDetail>? get movie => _detailData.movie;
 
   loadScreenData(int id){
-    detailData.fetchMovie(id);
+    _detailData.fetchMovie(id);
+  }
+
+  void saveMovie(String title, String image, int id){
+   
+    _detailData.saveMovie(title, image, id);
    
   }
 }

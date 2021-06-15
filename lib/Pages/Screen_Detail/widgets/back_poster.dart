@@ -17,9 +17,12 @@ class BackPoster extends StatelessWidget {
             return Container(
               height: MediaQuery.of(context).size.height,
               child: Container(
+                
                 child: Image.network(
                   "https://image.tmdb.org/t/p/original/${snapShot.data!.image}",
                   fit: BoxFit.fitHeight,
+                  alignment: Alignment.centerRight,
+                  scale: 0.1,
                 ),
               ),
             );

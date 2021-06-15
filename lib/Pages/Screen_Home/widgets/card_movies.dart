@@ -32,7 +32,7 @@ class CardMovie extends StatelessWidget {
           child: ClipRRect(
              borderRadius: BorderRadius.circular(20),
             child: Image.network(
-              'https://image.tmdb.org/t/p/original/$image',
+              'https://image.tmdb.org/t/p/w300/$image',
               fit: BoxFit.fitHeight,
               
             ),

@@ -1,6 +1,7 @@
 import 'package:desafio_2/Pages/Screen_By_Genres.dart/screen_list.dart';
 import 'package:desafio_2/Pages/Screen_Detail/screen_detail.dart';
 import 'package:desafio_2/Pages/Screen_Home/screen_home.dart';
+import 'package:desafio_2/Pages/Screen_favorited/favorited_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => ScreenHome(),
         'detail': (context) => ScreenDetail(),
         'genremovies': (context) => ScreenListMovies(),
+        'favorited': (context) => Favorited(),
       },
     );
   }

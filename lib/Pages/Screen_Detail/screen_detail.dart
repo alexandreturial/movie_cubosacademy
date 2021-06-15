@@ -36,10 +36,10 @@ class ScreenDetail extends StatelessWidget {
         id: id,
       ),
       SafeArea(
-          child: BackdropFilter(
+        child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: _sigmaX, sigmaY: _sigmaY),
         child: Container(
-          padding: EdgeInsets.all(15),
+          padding: EdgeInsets.symmetric(vertical: 15),
           color: Colors.black.withOpacity(0.2),
           child: FutureBuilder<MoviesDetail>(
               future: movieController.movie,
@@ -88,10 +88,20 @@ class ScreenDetail extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       BackButtonWidget(),
-                                      Text(
-                                        "Assistir",
-                                        style: AppTextStyles.body,
-                                      ),
+                                      GestureDetector(
+                                        onTap: (){
+                                          movieController.saveMovie(
+                                            snapShot.data!.title!, 
+                                            snapShot.data!.image!, 
+                                            snapShot.data!.id!
+                                          );
+                                        },
+                                        child: Icon(
+                                          Icons.star,
+                                          color: AppColors.grey,
+                                          size: 30,
+                                          ),
+                                      )
                                     ],
                                   )
                                 ],
