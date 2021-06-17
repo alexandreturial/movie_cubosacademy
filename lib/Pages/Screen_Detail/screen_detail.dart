@@ -10,7 +10,6 @@ import 'package:desafio_2/Pages/Screen_Detail/widgets/list_genres_movie.dart';
 import 'package:desafio_2/Pages/Screen_Detail/widgets/sub_title.dart';
 import 'package:desafio_2/Pages/Screen_Detail/widgets/title_movie.dart';
 import 'package:desafio_2/core/app_colors.dart';
-import 'package:desafio_2/core/app_textstyle.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
 class ScreenDetail extends StatelessWidget {
@@ -23,7 +22,7 @@ class ScreenDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final int id = ModalRoute.of(context)!.settings.arguments as int;
+    final String id = ModalRoute.of(context)!.settings.arguments as String;
     
     MovieDetailController movieController = MovieDetailController();
     movieController.loadScreenData(id);
@@ -96,11 +95,34 @@ class ScreenDetail extends StatelessWidget {
                                             snapShot.data!.id!
                                           );
                                         },
-                                        child: Icon(
-                                          Icons.star,
-                                          color: AppColors.grey,
-                                          size: 30,
-                                          ),
+                                        child: FutureBuilder<bool>(
+                                          future: movieController.isIn,
+                                          builder: (context, snapShot) {
+                                           
+                                            if (snapShot.hasData) {
+                                              if(snapShot.data! == true){
+                                                return Icon(
+                                                  Icons.star,
+                                                  color: AppColors.lightPink,
+                                                  size: 30,
+                                                );
+                                              }else{
+                                                return Icon(
+                                                  Icons.star,
+                                                  color: AppColors.grey,
+                                                  size: 30,
+                                                );
+                                              }
+                                            }
+                                            return Icon(
+                                              Icons.star,
+                                              color: AppColors.lightPink,
+                                              size: 30,
+                                            );
+                                          }
+                                             
+                                        ) 
+                                        
                                       )
                                     ],
                                   )

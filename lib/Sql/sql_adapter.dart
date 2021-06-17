@@ -11,19 +11,17 @@ class SQLAdapter extends InternalStorageAdpter{
       if(_database != null){
         return _database!;
       }
-
       _database = await initDB();
-      print(_database?.path);
       return _database!;
     }
 
   initDB() async{
-    String path = join(await getDatabasesPath(), 'movies_database.db');
+    String path = join(await getDatabasesPath(), 'favoritos_database.db');
 
     return await openDatabase(
       path, 
       onCreate: (db, version){
-        return db.execute("CREATE TABLE Movies(title TEXT, image TEXT, id TEXT)");
+        return db.execute("CREATE TABLE Favoritos(title TEXT, image TEXT, id_movie TEXT)");
       },
       version: 1);
   }
@@ -33,8 +31,8 @@ class SQLAdapter extends InternalStorageAdpter{
     final Database db = await database;
     
     var response = await db.query(
-      'Movies', 
-      columns: ['title, image, id'],
+      'Favoritos', 
+      columns: ['title, image, id_movie'],
       orderBy: 'rowid DESC',
     );
 
@@ -53,9 +51,9 @@ class SQLAdapter extends InternalStorageAdpter{
     var movies = {
       'title': title,
       'image': image,
-      'id': id,
+      'id_movie': id.toString(),
     };
-    await db.insert('Movies', movies);
+    await db.insert('Favoritos', movies);
     print('Movies salvo');
   }
 
@@ -66,9 +64,24 @@ class SQLAdapter extends InternalStorageAdpter{
     // );
     
     db.delete(
-      'Movies',
-      where: 'rowid = ?',
-      whereArgs: [movieId]
+      'Favoritos',
     );
+  }
+
+  Future<bool> isIn(String id) async{
+    final Database db = await database;
+    bool isin = false;
+
+    var response = await db.query(
+      'Favoritos', 
+      columns: ['id_movie'],
+      where: 'id_movie = ?',
+      whereArgs: [id],
+    );
+
+    if(response.length > 0){
+      isin = true;
+    }
+    return Future.value(isin);
   }
 }

@@ -1,8 +1,10 @@
+import 'package:desafio_2/core/app_images.dart';
+import 'package:desafio_2/core/app_textstyle.dart';
 import 'package:flutter/material.dart';
 
 class CardMovie extends StatelessWidget {
   final String? image;
-  final int? id;
+  final String? id;
   CardMovie({
     Key? key,
     this.image, 
@@ -34,6 +36,22 @@ class CardMovie extends StatelessWidget {
             child: Image.network(
               'https://image.tmdb.org/t/p/w300/$image',
               fit: BoxFit.fitHeight,
+              errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace){
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      AppImages.notFound,
+                      width: 150,
+                    ),
+                    Text(
+                      'image not found',
+                      style: AppTextStyles.bodyBold,
+                    )
+                  ],
+                );
+              },
+              
               
             ),
           )),

@@ -4,6 +4,7 @@ import 'package:desafio_2/Pages/Screen_favorited/Widgets/card_movies.dart';
 import 'package:desafio_2/Pages/Screen_favorited/controllers/movie_detail.dart';
 import 'package:desafio_2/core/JsonType/movies.dart';
 import 'package:desafio_2/core/app_colors.dart';
+import 'package:desafio_2/core/app_textstyle.dart';
 import 'package:flutter/material.dart';
 
 class Favorited extends StatelessWidget {
@@ -25,8 +26,7 @@ class Favorited extends StatelessWidget {
                     if (snapShot.connectionState != ConnectionState.active) {
                       return CircularProgressIndicator();
                     }
-                    if (snapShot.hasData) {
-                      print(snapShot.data!.movies![0].image);
+                    if (snapShot.hasData && snapShot.data!.movies != null) {
                       return GridView.builder(
                         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                             maxCrossAxisExtent: 200,
@@ -35,38 +35,32 @@ class Favorited extends StatelessWidget {
                             mainAxisSpacing: 6),
                         itemCount: snapShot.data!.movies!.length,
                         itemBuilder: (context, index) {
-                          if (snapShot.data!.movies!.length > 0) {
-                            return Expanded(
-                              //alignment: Alignment.center,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black,
-                                      offset: const Offset(0.0, 6.0),
-                                      blurRadius: 10,
-                                      spreadRadius: 0.0,
-                                    ), //BoxShadow//BoxShadow
-                                  ],
-                                ),
-                                child: CardMovies(
-                                  image: snapShot.data!.movies![0].description,
-                                  title:'${snapShot.data!.movies![0].title}',
-                                ),
+                            return Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black,
+                                    offset: const Offset(0.0, 6.0),
+                                    blurRadius: 10,
+                                    spreadRadius: 0.0,
+                                  ), //BoxShadow//BoxShadow
+                                ],
+                              ),
+                              child: CardMovies(
+                                image: snapShot.data!.movies![index].image,
+                                title:'${snapShot.data!.movies![index].title}',
                               ),
                             );
-                          } else {
-                            return Center(
-                              child: Text('Nenhum Filme encontrado'),
-                            );
-                          }
                         },
                       );
                     } else if (snapShot.hasError) {
                       return Text('snapShot.error');
                     } else {
-                      return Container();
+                      return Text(
+                          'Nenhum Filme encontrado',
+                            style: AppTextStyles.title25,
+                            textAlign: TextAlign.center,
+                        );
                     }
                   }),
             )),

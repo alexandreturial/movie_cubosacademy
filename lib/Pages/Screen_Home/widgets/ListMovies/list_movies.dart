@@ -27,17 +27,12 @@ class _ListMoviesState extends State<ListMovies> {
     super.initState();
     //identifica o movimento de scroll no ListBuild
     _scrollController.addListener(() {
+     
       if (_scrollController.position.pixels >=
-          (_scrollController.position.maxScrollExtent)) {
+          (_scrollController.position.maxScrollExtent - 400)) {
         widget.controller.setPage();
-        //print('Load more movies');
       }
     });
-  }
-
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
   }
 
 
@@ -60,7 +55,7 @@ class _ListMoviesState extends State<ListMovies> {
                 itemBuilder: (context, index) {
                   return CardMovie(
                     image: widget.movies[index].image,
-                    id: widget.movies[index].id,
+                    id: widget.movies[index].id.toString(),
                   );
                 }),
           ),

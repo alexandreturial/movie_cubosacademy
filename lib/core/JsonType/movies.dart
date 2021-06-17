@@ -32,7 +32,7 @@ class Movies{
 }
 
 class Movie{
-  int id = 0;
+  String id = '';
   String title = '';
   String image = '';
   String description = '';
@@ -46,13 +46,13 @@ class Movie{
 
   Movie.fromJson(Map<String, dynamic> json){
    
-    id = json['id'];
+    id = json['id'].toString();
     title = json['title'];
     image = json['poster_path'];
   }
 
   Movie.fromMap(Map<String, dynamic> map) :
-    id = map['id'],
+    id = map['id_movie'],
     title = map['title'],
     image = map['image'];
     

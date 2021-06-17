@@ -5,6 +5,7 @@ import 'package:desafio_2/Utils/internal_storage.dart';
 
 class MovieDetailMdoel{
   Future<MoviesDetail>? _movie;
+  Future<bool> _isIn = Future.value(false);
   final API api;
   final InternalStorageAdpter internalStorage;
 
@@ -12,9 +13,11 @@ class MovieDetailMdoel{
   : internalStorage = intenralStorageAdapter ?? SQLAdapter();
 
   Future<MoviesDetail>? get movie => _movie;
+  Future<bool> get isIn => _isIn;
 
-  fetchMovie(int id){
+  fetchMovie(String id){
     _movie  = api.fetchMovieDetail(id);
+    _isIn = internalStorage.isIn(id);
   }
 
   void saveMovie(String title, String image, int id){

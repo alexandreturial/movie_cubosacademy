@@ -43,7 +43,7 @@ class API{
     }
   }
 
-  Future<MoviesDetail> fetchMovieDetail(int id) async {
+  Future<MoviesDetail> fetchMovieDetail(String id) async {
     final response = await http.get(
       Uri.https(authority, '3/movie/$id', queryParameters)
     );
