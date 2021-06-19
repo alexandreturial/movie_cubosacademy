@@ -17,11 +17,11 @@ class ListMoviesModel{
   
   fetchMoveis(int id){
     //_movies  = api.fetchMovieByGenres(id);
-
      _movies = api.fetchMovieByGenres(id, paginate).then((value){
       if(value.movies != null){
         moveisList.addMovies(value.movies!); 
       }
+      addPaginate();
       return Future.value(moveisList);
     });
   }

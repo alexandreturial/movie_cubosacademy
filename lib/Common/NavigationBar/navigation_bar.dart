@@ -14,24 +14,19 @@ class NavigationBar extends StatefulWidget {
 }
 
 class _NavigationBarState extends State<NavigationBar> {
-
   void _onItemTapped(int index) {
     setState(() {
       _getPage(index);
     });
   }
 
-
-  void _getPage(int index){
+  void _getPage(int index) {
     switch (index) {
       case 0:
-        Navigator.popAndPushNamed(context, '/');
+        Navigator.pushNamed(context, '/');
         break;
       case 1:
-        //Navigator.popAndPushNamed(context, 'user');
-        break;
-      case 2:
-        Navigator.popAndPushNamed(context, 'favorited');
+        Navigator.pushNamed(context, 'favorited');
         break;
       default:
     }
@@ -49,18 +44,15 @@ class _NavigationBarState extends State<NavigationBar> {
           label: "Home",
         ),
         BottomNavigationBarItem(
-          icon: new Icon(Icons.person),
-          label: "User",
-          
+          icon: new Icon(Icons.favorite),
+          label: "favoritos",
         ),
-        BottomNavigationBarItem(
-            icon: new Icon(Icons.favorite), label: "favoritos"),
       ],
-      
+
       // fixedColor: AppColors.lightPink,
       currentIndex: widget.index,
       selectedItemColor: AppColors.lightPink,
-       selectedLabelStyle: AppTextStyles.body15,
+      selectedLabelStyle: AppTextStyles.body15,
       onTap: _onItemTapped,
     );
   }

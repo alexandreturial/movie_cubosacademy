@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:desafio_2/Pages/Screen_By_Genres.dart/widgets/icon_action.dart';
 import 'package:desafio_2/Pages/Screen_By_Genres.dart/widgets/navegation_button.dart';
@@ -26,7 +28,7 @@ class ScreenListMovies extends StatelessWidget {
               return CircularProgressIndicator();
             }
             if (snapShot.hasData) {
-              return PageView.builder(
+              return ListView.builder(
                 scrollDirection: Axis.horizontal,
                 physics: const NeverScrollableScrollPhysics(),
                 controller: listmovies.pageController,
@@ -38,8 +40,7 @@ class ScreenListMovies extends StatelessWidget {
                         ),
                         SafeArea(
                           child: Container(
-                            padding:
-                                EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                             width: MediaQuery.of(context).size.width,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -52,6 +53,7 @@ class ScreenListMovies extends StatelessWidget {
                                   iconBack: IconAction(
                                     icon: Icons.arrow_back_rounded,
                                     pageAction: () {
+                                      
                                       if (listmovies.getPage() == 0) {
                                         Navigator.pop(context);
                                       } else {

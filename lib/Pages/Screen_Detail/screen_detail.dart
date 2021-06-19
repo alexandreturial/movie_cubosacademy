@@ -12,7 +12,7 @@ import 'package:desafio_2/Pages/Screen_Detail/widgets/title_movie.dart';
 import 'package:desafio_2/core/app_colors.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
-class ScreenDetail extends StatelessWidget {
+class ScreenDetail extends StatefulWidget {
   //final int id;
 
   ScreenDetail({
@@ -21,9 +21,14 @@ class ScreenDetail extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  _ScreenDetailState createState() => _ScreenDetailState();
+}
+
+class _ScreenDetailState extends State<ScreenDetail> {
+  @override
   Widget build(BuildContext context) {
     final String id = ModalRoute.of(context)!.settings.arguments as String;
-    
+
     MovieDetailController movieController = MovieDetailController();
     movieController.loadScreenData(id);
 
@@ -35,7 +40,7 @@ class ScreenDetail extends StatelessWidget {
         id: id,
       ),
       SafeArea(
-        child: BackdropFilter(
+          child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: _sigmaX, sigmaY: _sigmaY),
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 15),
@@ -50,10 +55,10 @@ class ScreenDetail extends StatelessWidget {
                       Column(
                         children: [
                           TitleMovie(
-                            title: snapShot.data!.title!,
+                            title: snapShot.data!.title,
                           ),
                           SubTitle(
-                            subTitle: snapShot.data!.date!,
+                            subTitle: snapShot.data!.date,
                           )
                         ],
                       ),
@@ -73,57 +78,49 @@ class ScreenDetail extends StatelessWidget {
                               height: 300,
                               padding: EdgeInsets.all(15),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Description(
-                                    about:
-                                      "${snapShot.data!.overview!.substring(0, 150)}..."
-                                  ),
+                                      about:
+                                          "${snapShot.data!.overview.substring(0, 150)}..."),
                                   ListGenresMovie(
-                                    genres: snapShot.data!.genres!,
+                                    genres: snapShot.data!.genres,
                                   ),
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       BackButtonWidget(),
                                       GestureDetector(
-                                        onTap: (){
-                                          movieController.saveMovie(
-                                            snapShot.data!.title!, 
-                                            snapShot.data!.image!, 
-                                            snapShot.data!.id!
-                                          );
+                                        onTap: () {
+                                          movieController.handleMovie(
+                                              snapShot.data!.title,
+                                              snapShot.data!.image,
+                                              snapShot.data!.id);
                                         },
-                                        child: FutureBuilder<bool>(
-                                          future: movieController.isIn,
+                                        child: StreamBuilder<bool>(
+                                          stream:
+                                              movieController.isInStream.stream,
                                           builder: (context, snapShot) {
-                                           
                                             if (snapShot.hasData) {
-                                              if(snapShot.data! == true){
-                                                return Icon(
-                                                  Icons.star,
-                                                  color: AppColors.lightPink,
-                                                  size: 30,
-                                                );
-                                              }else{
-                                                return Icon(
-                                                  Icons.star,
-                                                  color: AppColors.grey,
-                                                  size: 30,
-                                                );
-                                              }
+                                              return Icon(
+                                                Icons.star,
+                                                color: snapShot.data! == true
+                                                    ? AppColors.lightPink
+                                                    : AppColors.grey,
+                                                size: 30,
+                                              );
                                             }
                                             return Icon(
                                               Icons.star,
-                                              color: AppColors.lightPink,
+                                              color: AppColors.grey,
                                               size: 30,
                                             );
-                                          }
-                                             
-                                        ) 
-                                        
-                                      )
+                                          },
+                                        ),
+                                      ),
                                     ],
                                   )
                                 ],

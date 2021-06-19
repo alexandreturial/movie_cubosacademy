@@ -27,9 +27,6 @@ class HomeModel{
       }
       return Future.value(moveisList);
     });
-
-    
-   
   }
 
   Future<Genres> get genres => _genres!;

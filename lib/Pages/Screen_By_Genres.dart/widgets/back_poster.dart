@@ -15,6 +15,7 @@ class BackPoster extends StatelessWidget {
       children: [
         Container(
           height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
           child: Container(
             child: Image.network(
               "https://image.tmdb.org/t/p/original/$image",

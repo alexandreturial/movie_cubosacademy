@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:desafio_2/Pages/Screen_Home/JsonType/genres.dart';
 import 'package:desafio_2/Pages/Screen_Home/widgets/CardCategoies/card_categoires.dart';
-import 'package:desafio_2/Pages/Screen_Home/widgets/TitleColumn/title_column.dart';
+import 'package:desafio_2/Common/TitleColumn/title_column.dart';
 
 class ListCategories extends StatelessWidget {
   final List<Genre>? genres;

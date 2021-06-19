@@ -1,18 +1,18 @@
 class MoviesDetail {
-  int? id;
-  String? title;
-  String? date;
-  String? overview;
-  String? image;
-  List<Genre>? genres;
+  int id = 0;
+  String title = '';
+  String date = '';
+  String overview = '';
+  String image = '';
+  List<Genre> genres = [Genre(0,'')];
 
   MoviesDetail(
-    this.id,
-    this.title,
-    this.date,
-    this.overview,
-    this.image,
-    this.genres,
+    // this.id,
+    // this.title,
+    // this.date,
+    // this.overview,
+    // this.image,
+    // this.genres,
   );
 
   MoviesDetail.fromJson(Map<String, dynamic> json){
@@ -31,8 +31,8 @@ class MoviesDetail {
 }
 
 class Genre {
-  int? id;
-  String? name; 
+  int id = 0;
+  String name = ''; 
 
   Genre(
     this.id,

@@ -1,7 +1,7 @@
 import 'package:desafio_2/Pages/Screen_Home/Controller/controller.dart';
 import 'package:flutter/material.dart';
 
-import 'package:desafio_2/Pages/Screen_Home/widgets/TitleColumn/title_column.dart';
+import 'package:desafio_2/Common/TitleColumn/title_column.dart';
 import 'package:desafio_2/Pages/Screen_Home/widgets/card_movies.dart';
 import 'package:desafio_2/core/JsonType/movies.dart';
 
@@ -29,7 +29,7 @@ class _ListMoviesState extends State<ListMovies> {
     _scrollController.addListener(() {
      
       if (_scrollController.position.pixels >=
-          (_scrollController.position.maxScrollExtent - 400)) {
+          (_scrollController.position.maxScrollExtent - 800)) {
         widget.controller.setPage();
       }
     });

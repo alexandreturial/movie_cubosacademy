@@ -7,13 +7,14 @@ import 'package:path/path.dart';
 class SQLAdapter extends InternalStorageAdpter{
   static Database? _database;
 
-   Future<Database> get database async{
-      if(_database != null){
-        return _database!;
-      }
-      _database = await initDB();
+  Future<Database> get database async{
+    if(_database != null){
       return _database!;
     }
+
+    _database = await initDB();
+    return _database!;
+  }
 
   initDB() async{
     String path = join(await getDatabasesPath(), 'favoritos_database.db');
@@ -23,7 +24,8 @@ class SQLAdapter extends InternalStorageAdpter{
       onCreate: (db, version){
         return db.execute("CREATE TABLE Favoritos(title TEXT, image TEXT, id_movie TEXT)");
       },
-      version: 1);
+      version: 1
+    );
   }
 
   @override
@@ -46,26 +48,32 @@ class SQLAdapter extends InternalStorageAdpter{
   }
 
   @override
-  void saveMovies(String title, String image, int id) async{
+  Future<bool> saveMovies(String title, String image, int id) async{
+    bool isSave = false;
     final Database db = await database;
     var movies = {
       'title': title,
       'image': image,
       'id_movie': id.toString(),
     };
-    await db.insert('Favoritos', movies);
-    print('Movies salvo');
+    await db.insert('Favoritos', movies).then((value){
+      isSave = true;
+    });
+    print('salvo');
+    return isSave;
+    
   }
 
-  void deleteMovies(int movieId) async{
+  Future<bool> deleteMovies(int movieId) async{
+    bool isSave = false;
     final Database db = await database;
-    // db.rawDelete(
-    //   'DELETE FROM Movies WHERE rowid = (SELECT MAX(rowid) FROM Movies)'
-    // );
     
     db.delete(
       'Favoritos',
+      where: 'id_movie = ?',
+      whereArgs: [movieId],
     );
+    return isSave;
   }
 
   Future<bool> isIn(String id) async{

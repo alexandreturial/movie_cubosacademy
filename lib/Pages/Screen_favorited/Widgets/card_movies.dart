@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:desafio_2/core/app_colors.dart';
+import 'package:desafio_2/core/app_images.dart';
 import 'package:desafio_2/core/app_textstyle.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +25,21 @@ class CardMovies extends StatelessWidget {
               'https://image.tmdb.org/t/p/w500/$image',
               height: 400,
               fit: BoxFit.fitHeight,
+              errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace){
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      AppImages.notFound,
+                      width: 150,
+                    ),
+                    Text(
+                      'image not found',
+                      style: AppTextStyles.bodyBold,
+                    )
+                  ],
+                );
+              },
             ),
           ),
         ),

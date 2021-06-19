@@ -10,7 +10,6 @@ class Movies{
     movies = movieList.map((item){
       return Movie.fromJson(item);
     }).toList();
-
   }
 
   void addMovies(List<Movie> values){
@@ -19,7 +18,6 @@ class Movies{
     }else{
       movies!..addAll(values);
     }
-    
   }
 
   Movies.fromMap(List<Map<String, dynamic>> json){

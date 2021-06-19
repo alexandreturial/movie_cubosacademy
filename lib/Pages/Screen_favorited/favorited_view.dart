@@ -1,5 +1,5 @@
 import 'package:desafio_2/Common/NavigationBar/navigation_bar.dart';
-import 'package:desafio_2/Pages/Screen_By_Genres.dart/CardMovie/card_movie.dart';
+import 'package:desafio_2/Common/TitleColumn/title_column.dart';
 import 'package:desafio_2/Pages/Screen_favorited/Widgets/card_movies.dart';
 import 'package:desafio_2/Pages/Screen_favorited/controllers/movie_detail.dart';
 import 'package:desafio_2/core/JsonType/movies.dart';
@@ -15,26 +15,37 @@ class Favorited extends StatelessWidget {
     MovieFavoritedController controller = MovieFavoritedController();
     controller.getMovies();
     return Scaffold(
-        body: Container(
-            padding: EdgeInsets.all(15),
-            color: AppColors.backgorund,
-            height: MediaQuery.of(context).size.height,
-            child: Center(
-              child: StreamBuilder<Movies>(
-                  stream: controller.movies.stream,
-                  builder: (context, snapShot) {
-                    if (snapShot.connectionState != ConnectionState.active) {
-                      return CircularProgressIndicator();
-                    }
-                    if (snapShot.hasData && snapShot.data!.movies != null) {
-                      return GridView.builder(
-                        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: 200,
-                            childAspectRatio: 0.7,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 6),
-                        itemCount: snapShot.data!.movies!.length,
-                        itemBuilder: (context, index) {
+        backgroundColor: AppColors.backgorund,
+        body: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(left: 15, top: 30),
+              child: TitleColumn(
+                title: 'Favorites',
+                size: 35,
+              )
+            ),
+            Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                height: MediaQuery.of(context).size.height - 128,
+                child: StreamBuilder<Movies>(
+                    stream: controller.movies.stream,
+                    builder: (context, snapShot) {
+                      if (snapShot.connectionState != ConnectionState.active) {
+                        return CircularProgressIndicator();
+                      }
+                      if (snapShot.hasData && snapShot.data!.movies != null) {
+                        return GridView.builder(
+                          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                              maxCrossAxisExtent: 200,
+                              childAspectRatio: 0.7,
+                              crossAxisSpacing: 10,
+                              mainAxisSpacing: 6),
+                          itemCount: snapShot.data!.movies!.length,
+                          itemBuilder: (context, index) {
+                            var image = snapShot.data!.movies![index].image;
+                            var title = snapShot.data!.movies![index].title;
+                            var id = snapShot.data!.movies![index].id;
                             return Container(
                               decoration: BoxDecoration(
                                 boxShadow: [
@@ -46,26 +57,34 @@ class Favorited extends StatelessWidget {
                                   ), //BoxShadow//BoxShadow
                                 ],
                               ),
-                              child: CardMovies(
-                                image: snapShot.data!.movies![index].image,
-                                title:'${snapShot.data!.movies![index].title}',
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.popAndPushNamed(
+                                  context, 'detail', 
+                                  arguments: id);
+                                },
+                                child: CardMovies(
+                                  image: image,
+                                  title: '$title',
+                                ),
                               ),
                             );
-                        },
-                      );
-                    } else if (snapShot.hasError) {
-                      return Text('snapShot.error');
-                    } else {
-                      return Text(
-                          'Nenhum Filme encontrado',
-                            style: AppTextStyles.title25,
-                            textAlign: TextAlign.center,
+                          },
                         );
-                    }
-                  }),
-            )),
+                      } else if (snapShot.hasError) {
+                        return Text('snapShot.error');
+                      } else {
+                        return Text(
+                          'Nenhum Filme encontrado',
+                          style: AppTextStyles.title25,
+                          textAlign: TextAlign.center,
+                        );
+                      }
+                    })),
+          ],
+        ),
         bottomNavigationBar: NavigationBar(
-          index: 2,
+          index: 1,
         ));
   }
 }

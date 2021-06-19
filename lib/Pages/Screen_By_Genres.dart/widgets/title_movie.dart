@@ -12,6 +12,7 @@ class TitleMovie extends StatelessWidget {
     return Text(
       title,
       style: AppTextStyles.title25,
+      textAlign: TextAlign.center,
     );
   }
 }

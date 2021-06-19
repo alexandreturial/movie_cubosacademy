@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
 
-class AppTextStyles {
+abstract class AppTextStyles {
   static final TextStyle title = GoogleFonts.poppins(
     color: AppColors.white,
     fontSize: 20,
