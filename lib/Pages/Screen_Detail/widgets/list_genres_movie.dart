@@ -20,7 +20,7 @@ class ListGenresMovie extends StatelessWidget {
         itemCount: genres.length,
         itemBuilder: (context, index) {
           return Container(
-            margin: EdgeInsets.symmetric(horizontal: 5),
+            margin: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             alignment: Alignment.center,
             decoration: BoxDecoration(

@@ -1,8 +1,8 @@
 class Movies{
  
   List<Movie>? movies;
-  //Movies({List<Movie>? movies}) : this.movies  = movies ?? [new Movie(0, '', '')];
-  Movies();
+  Movies({List<Movie>? movies}) : this.movies  = movies ?? [Movie('0','title','img','description')];
+  //Movies();
   Movies.fromJson(Map<String, dynamic> json){
 
   var movieList = json['results'] as List;

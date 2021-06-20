@@ -79,7 +79,7 @@ class _ScreenDetailState extends State<ScreenDetail> {
                               padding: EdgeInsets.all(15),
                               child: Column(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Description(

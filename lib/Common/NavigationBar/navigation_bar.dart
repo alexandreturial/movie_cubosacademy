@@ -5,9 +5,11 @@ import 'package:desafio_2/core/app_textstyle.dart';
 
 class NavigationBar extends StatefulWidget {
   final int index;
+  final Function currentIndex;
   NavigationBar({
     Key? key,
-    this.index = 0,
+    this.index = 0, 
+    required this.currentIndex,
   }) : super(key: key);
   @override
   _NavigationBarState createState() => _NavigationBarState();
@@ -15,21 +17,7 @@ class NavigationBar extends StatefulWidget {
 
 class _NavigationBarState extends State<NavigationBar> {
   void _onItemTapped(int index) {
-    setState(() {
-      _getPage(index);
-    });
-  }
-
-  void _getPage(int index) {
-    switch (index) {
-      case 0:
-        Navigator.pushNamed(context, '/');
-        break;
-      case 1:
-        Navigator.pushNamed(context, 'favorited');
-        break;
-      default:
-    }
+    widget.currentIndex(index);
   }
 
   @override

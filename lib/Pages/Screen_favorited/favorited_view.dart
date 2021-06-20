@@ -7,84 +7,85 @@ import 'package:desafio_2/core/app_colors.dart';
 import 'package:desafio_2/core/app_textstyle.dart';
 import 'package:flutter/material.dart';
 
-class Favorited extends StatelessWidget {
-  const Favorited({Key? key}) : super(key: key);
+class ScreenFavorited extends StatelessWidget {
+  const ScreenFavorited({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     MovieFavoritedController controller = MovieFavoritedController();
     controller.getMovies();
     return Scaffold(
-        backgroundColor: AppColors.backgorund,
-        body: Column(
-          children: [
-            Padding(
+      backgroundColor: AppColors.backgorund,
+      body: Column(
+        children: [
+          Padding(
               padding: EdgeInsets.only(left: 15, top: 30),
               child: TitleColumn(
                 title: 'Favorites',
                 size: 35,
-              )
-            ),
-            Container(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                height: MediaQuery.of(context).size.height - 128,
-                child: StreamBuilder<Movies>(
-                    stream: controller.movies.stream,
-                    builder: (context, snapShot) {
-                      if (snapShot.connectionState != ConnectionState.active) {
-                        return CircularProgressIndicator();
-                      }
-                      if (snapShot.hasData && snapShot.data!.movies != null) {
-                        return GridView.builder(
-                          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                              maxCrossAxisExtent: 200,
-                              childAspectRatio: 0.7,
-                              crossAxisSpacing: 10,
-                              mainAxisSpacing: 6),
-                          itemCount: snapShot.data!.movies!.length,
-                          itemBuilder: (context, index) {
-                            var image = snapShot.data!.movies![index].image;
-                            var title = snapShot.data!.movies![index].title;
-                            var id = snapShot.data!.movies![index].id;
-                            return Container(
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black,
-                                    offset: const Offset(0.0, 6.0),
-                                    blurRadius: 10,
-                                    spreadRadius: 0.0,
-                                  ), //BoxShadow//BoxShadow
-                                ],
-                              ),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.popAndPushNamed(
-                                  context, 'detail', 
+              )),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            height: MediaQuery.of(context).size.height - 128,
+            child: StreamBuilder<Movies>(
+                stream: controller.movies.stream,
+                builder: (context, snapShot) {
+                  if (snapShot.connectionState != ConnectionState.active) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  if (snapShot.hasData && snapShot.data!.movies != null) {
+                    return GridView.builder(
+                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                          maxCrossAxisExtent: 200,
+                          childAspectRatio: 0.7,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10),
+                      itemCount: snapShot.data!.movies!.length,
+                      itemBuilder: (context, index) {
+                        var image = snapShot.data!.movies![index].image;
+                        var title = snapShot.data!.movies![index].title;
+                        var id = snapShot.data!.movies![index].id;
+                        return Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black,
+                                offset: const Offset(0.0, 6.0),
+                                blurRadius: 10,
+                                spreadRadius: 0.0,
+                              ), //BoxShadow//BoxShadow
+                            ],
+                          ),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(context, 'detail',
                                   arguments: id);
-                                },
-                                child: CardMovies(
-                                  image: image,
-                                  title: '$title',
-                                ),
-                              ),
-                            );
-                          },
+                            },
+                            child: CardMovies(
+                              image: image,
+                              title: '$title',
+                            ),
+                          ),
                         );
-                      } else if (snapShot.hasError) {
-                        return Text('snapShot.error');
-                      } else {
-                        return Text(
-                          'Nenhum Filme encontrado',
-                          style: AppTextStyles.title25,
-                          textAlign: TextAlign.center,
-                        );
-                      }
-                    })),
-          ],
-        ),
-        bottomNavigationBar: NavigationBar(
-          index: 1,
-        ));
+                      },
+                    );
+                  } else if (snapShot.hasError) {
+                    return Text('snapShot.error');
+                  } else {
+                    return Center(
+                      child: Text(
+                        'Nenhum Filme encontrado',
+                        style: AppTextStyles.title25,
+                        textAlign: TextAlign.center,
+                      ),
+                    );
+                  }
+                }),
+          ),
+        ],
+      ),
+    );
   }
 }

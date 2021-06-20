@@ -16,63 +16,61 @@ class ScreenHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     controller.loadScreenData();
-
     return Scaffold(
-        body: Container(
-          padding: EdgeInsets.only(bottom: 5),
-          color: AppColors.backgorund,
-          height: MediaQuery.of(context).size.height,
-          child: DraggableScrollableSheet(
-              initialChildSize: 1,
-              minChildSize: 1,
-              maxChildSize: 1,
-              builder:
-                  (BuildContext context, ScrollController scrollController) {
-                return SingleChildScrollView(
-                        controller: scrollController,
-                        dragStartBehavior: DragStartBehavior.start,
-                        child: Column(
-                          children: [
-                            AppBartWidget(),
-                            StreamBuilder<Movies>(
-                              stream: controller.moviesStream.stream,
-                              builder: (context, snapShot) {
-                                if(snapShot.connectionState != ConnectionState.active){
-                                  return CircularProgressIndicator();
-                                }
-                                if (snapShot.hasData) {
-                                  return ListMovies(
-                                    movies: snapShot.data!.movies!,
-                                    controller: controller,
-                                  );
-                                }else if (snapShot.hasError) {
-                                  return Text('snapShot.error');
-                                } else {
-                                  return Container();
-                                }
-                            }
-                            ),
-                            StreamBuilder<Genres>(
-                              stream: controller.genresStream.stream,
-                              builder: (context, snapShot) {
-                                if(snapShot.connectionState != ConnectionState.active){
-                                  return CircularProgressIndicator();
-                                }
-                                if (snapShot.hasData) {
-                                  return ListCategories(genres: snapShot.data!.genres);
-                                }else if (snapShot.hasError) {
-                                  return Text('snapShot.error');
-                                } else {
-                                  return Container();
-                                }
-                            }
-                            ),
-                          ],
-                        ),
-                      );
-              }),
-        ),
-        bottomNavigationBar: NavigationBar()
-        );
+      body: Container(
+        padding: EdgeInsets.only(bottom: 5),
+        color: AppColors.backgorund,
+        height: MediaQuery.of(context).size.height,
+        child: DraggableScrollableSheet(
+            initialChildSize: 1,
+            minChildSize: 1,
+            maxChildSize: 1,
+            builder: (BuildContext context, ScrollController scrollController) {
+              return SingleChildScrollView(
+                controller: scrollController,
+                dragStartBehavior: DragStartBehavior.start,
+                child: Column(
+                  children: [
+                    AppBartWidget(),
+                    StreamBuilder<Movies>(
+                        stream: controller.moviesStream.stream,
+                        builder: (context, snapShot) {
+                          if (snapShot.connectionState !=
+                              ConnectionState.active) {
+                            return CircularProgressIndicator();
+                          }
+                          if (snapShot.hasData) {
+                            return ListMovies(
+                              movies: snapShot.data!.movies!,
+                              controller: controller,
+                            );
+                          } else if (snapShot.hasError) {
+                            return Text('snapShot.error');
+                          } else {
+                            return Container();
+                          }
+                        }),
+                    StreamBuilder<Genres>(
+                        stream: controller.genresStream.stream,
+                        builder: (context, snapShot) {
+                          if (snapShot.connectionState !=
+                              ConnectionState.active) {
+                            return CircularProgressIndicator();
+                          }
+                          if (snapShot.hasData) {
+                            return ListCategories(
+                                genres: snapShot.data!.genres);
+                          } else if (snapShot.hasError) {
+                            return Text('snapShot.error');
+                          } else {
+                            return Container();
+                          }
+                        }),
+                  ],
+                ),
+              );
+            }),
+      ),
+    );
   }
 }
