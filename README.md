@@ -20,9 +20,9 @@ development, and a full API reference.
 
 <p align="center">
   
-<img src="https://github.com/alexandreturial/movie_cubosacademy/blob/main/assets/projeto/tela1.jpg?raw=true" height="500">
-<img src="https://github.com/alexandreturial/movie_cubosacademy/blob/main/assets/projeto/tela2.jpg?raw=true" height="500">
-<img src="https://github.com/alexandreturial/movie_cubosacademy/blob/main/assets/projeto/tela3.jpg?raw=true" height="500">
-<img src="https://github.com/alexandreturial/movie_cubosacademy/blob/main/assets/projeto/tela4.jpg?raw=true" height="500">
+<img src="https://github.com/alexandreturial/movie_cubosacademy/blob/desafio_final/assets/images/projeto/tela1.jpg" height="500">
+<img src="https://github.com/alexandreturial/movie_cubosacademy/blob/desafio_final/assets/images/projeto/tela2.jpg" height="500">
+<img src="https://github.com/alexandreturial/movie_cubosacademy/blob/desafio_final/assets/images/projeto/tela3.jpg" height="500">
+<img src="https://github.com/alexandreturial/movie_cubosacademy/blob/desafio_final/assets/images/projeto/tela4.jpg" height="500">
 
 </p>
