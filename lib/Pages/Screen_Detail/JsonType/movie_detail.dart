@@ -4,6 +4,7 @@ class MoviesDetail {
   String date = '';
   String overview = '';
   String image = '';
+  String note = '0.0';
   List<Genre> genres = [Genre(0,'')];
 
   MoviesDetail(
@@ -21,6 +22,7 @@ class MoviesDetail {
     date = json['release_date'];
     overview = json['overview'] == "" ? "this movie have not description" : json['overview'];
     image = json['backdrop_path'];
+    note =  json['vote_average'].toString();
 
     var genresList = json['genres'] as List;
 

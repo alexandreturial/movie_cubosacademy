@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:desafio_2/Pages/Screen_Detail/widgets/error_widget.dart';
+import 'package:desafio_2/core/app_textstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:desafio_2/Pages/Screen_Detail/JsonType/movie_detail.dart';
 import 'package:desafio_2/Pages/Screen_Detail/controllers/movie_detail.dart';
@@ -92,8 +93,16 @@ class _ScreenDetailState extends State<ScreenDetail> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Description(
+                                    sized: 2,
                                     about:
                                     description,
+                                  ),
+                                  SizedBox(
+                                    height: 15,
+                                  ),
+                                  Description(
+                                    sized: 1,
+                                    about:'Note: ${snapShot.data!.note}',
                                   ),
                                   ListGenresMovie(
                                     genres: snapShot.data!.genres,
