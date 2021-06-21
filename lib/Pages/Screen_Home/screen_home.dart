@@ -1,5 +1,4 @@
 import 'package:desafio_2/Common/AppBar/app_bar.dart';
-import 'package:desafio_2/Common/NavigationBar/navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

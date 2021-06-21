@@ -44,7 +44,7 @@ class BackPoster extends StatelessWidget {
               ),
             );
           } else if (snapShot.hasError) {
-            return Text('snapShot.error');
+            return Text('');
           } else {
             return Container();
           }

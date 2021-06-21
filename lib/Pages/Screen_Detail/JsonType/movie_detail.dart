@@ -7,19 +7,19 @@ class MoviesDetail {
   List<Genre> genres = [Genre(0,'')];
 
   MoviesDetail(
-    // this.id,
-    // this.title,
-    // this.date,
-    // this.overview,
-    // this.image,
-    // this.genres,
+    //  this.id,
+    //  this.title,
+    //  this.date,
+    //  this.overview,
+    //  this.image,
+    //  this.genres,
   );
 
   MoviesDetail.fromJson(Map<String, dynamic> json){
     id = json['id'];
     title = json['title'];
     date = json['release_date'];
-    overview = json['overview'];
+    overview = json['overview'] == "" ? "this movie have not description" : json['overview'];
     image = json['backdrop_path'];
 
     var genresList = json['genres'] as List;

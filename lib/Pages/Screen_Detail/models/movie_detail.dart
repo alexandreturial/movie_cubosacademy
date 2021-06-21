@@ -13,7 +13,7 @@ class MovieDetailMdoel{
   MovieDetailMdoel({this.api = const API(), InternalStorageAdpter? intenralStorageAdapter})
   : internalStorage = intenralStorageAdapter ?? SQLAdapter();
 
-  Future<MoviesDetail>? get movie => _movie;
+  Future<MoviesDetail> get movie => _movie;
   Future<bool> get isIn => _isIn;
 
   fetchMovie(String id){

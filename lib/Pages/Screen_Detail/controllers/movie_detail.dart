@@ -7,7 +7,7 @@ import 'package:desafio_2/Pages/Screen_Detail/models/movie_detail.dart';
 class MovieDetailController{
   final _detailData = MovieDetailMdoel();
 
-  Future<MoviesDetail> get movie => _detailData.movie!;
+  Future<MoviesDetail> get movie => _detailData.movie;
   
   Future<bool> get isIn => _detailData.isIn;
 

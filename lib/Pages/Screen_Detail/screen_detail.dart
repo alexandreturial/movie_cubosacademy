@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:desafio_2/Pages/Screen_Detail/widgets/error_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:desafio_2/Pages/Screen_Detail/JsonType/movie_detail.dart';
 import 'package:desafio_2/Pages/Screen_Detail/controllers/movie_detail.dart';
@@ -48,7 +49,15 @@ class _ScreenDetailState extends State<ScreenDetail> {
           child: FutureBuilder<MoviesDetail>(
               future: movieController.movie,
               builder: (context, snapShot) {
+                if (snapShot.hasError) {
+                  return ErroWidget();
+                }
                 if (snapShot.hasData) {
+                  var description =  snapShot.data!.overview;
+                  description = (description.length <= 150) ? 
+                                    "$description" : 
+                                    "${description.substring(0, 150)}...";
+                  
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -83,8 +92,9 @@ class _ScreenDetailState extends State<ScreenDetail> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Description(
-                                      about:
-                                          "${snapShot.data!.overview.substring(0, 150)}..."),
+                                    about:
+                                    description,
+                                  ),
                                   ListGenresMovie(
                                     genres: snapShot.data!.genres,
                                   ),
@@ -131,9 +141,7 @@ class _ScreenDetailState extends State<ScreenDetail> {
                       ),
                     ],
                   );
-                } else if (snapShot.hasError) {
-                  return Text('snapShot.error');
-                } else {
+                }  else {
                   return Container();
                 }
               }),

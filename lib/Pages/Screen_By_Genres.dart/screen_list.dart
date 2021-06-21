@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:desafio_2/Pages/Screen_By_Genres.dart/widgets/icon_action.dart';
 import 'package:desafio_2/Pages/Screen_By_Genres.dart/widgets/navegation_button.dart';

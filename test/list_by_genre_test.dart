@@ -1,33 +1,33 @@
-// import 'package:flutter_test/flutter_test.dart';
-// import 'package:movie_desafio/API/api.dart';
-// import 'package:movie_desafio/Pages/Screen_By_Genres.dart/models/model.dart';
-// import 'package:movie_desafio/core/JsonType/movies.dart';
+import 'package:desafio_2/API/api.dart';
+import 'package:desafio_2/Pages/Screen_By_Genres.dart/models/model.dart';
+import 'package:desafio_2/core/JsonType/movies.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 
-// void main() {
+void main() {
 
-//   test('fetchGenres and fetchMovie should fill movies and genres variable',(){
-//     final model = ListMoviesModel(api: MockAPI());
+  test('fetchGenres and fetchMovie should fill movies and genres variable',(){
+    final model = ListMoviesModel(api: MockAPI());
 
-//     model.fetchMoveis(15);
+    model.fetchMoveis(15);
 
-//      model.movies.then((movies){
-//        expect(movies.movies[0].title, 'title');
-//      });
+     model.movies.then((movies){
+       expect(movies.movies![0].title, 'title');
+     });
 
-//   });
-// }
+  });
+}
 
-// class MockAPI extends API{
+class MockAPI extends API{
   
-//   @override
-//   Future<Movies> fetchMovie(){
-//     final movie = Movie(0,'title','img');
-//     final movies = Movies([movie]);
+  @override
+  Future<Movies> fetchMovie(id){
+    final List<Movie> movie = [Movie('0','titulo','image','description')];
+    final movies = Movies(movies: movie);
 
-//     return Future.value(movies);
-//   }
+    return Future.value(movies);
+  }
 
-// }
+}
 
 

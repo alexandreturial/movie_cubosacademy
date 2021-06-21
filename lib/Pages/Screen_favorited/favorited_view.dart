@@ -1,4 +1,3 @@
-import 'package:desafio_2/Common/NavigationBar/navigation_bar.dart';
 import 'package:desafio_2/Common/TitleColumn/title_column.dart';
 import 'package:desafio_2/Pages/Screen_favorited/Widgets/card_movies.dart';
 import 'package:desafio_2/Pages/Screen_favorited/controllers/movie_detail.dart';

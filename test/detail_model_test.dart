@@ -10,15 +10,15 @@ void main(){
 
     expect(model.movie, completion(isNotNull));
 
-    model.movie!.then((movie){
-      expect(movie.title, 'teste');
+    model.movie.then((movie){
+      expect(movie.title, '');
     });
   });
 }
 
 class MockApi extends API{
   Future<MoviesDetail> fetchMovieDetail(String id){
-    final movie = MoviesDetail();
+    final MoviesDetail movie = MoviesDetail();
     return Future.value(movie);
   }
 }

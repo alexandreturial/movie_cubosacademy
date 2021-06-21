@@ -13,7 +13,7 @@ class Movies{
   }
 
   void addMovies(List<Movie> values){
-    if(movies == null){
+    if(movies![0].id =='0'){
       movies = values;
     }else{
       movies!..addAll(values);
