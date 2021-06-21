@@ -10,7 +10,7 @@ class BackButtonWidget extends StatelessWidget {
         color: AppColors.lightPink,
         size: 35,
       ),
-      onTap: () => Navigator.pop(context),
+      onTap: () => Navigator.popAndPushNamed(context, '/'),
     );
   }
 }

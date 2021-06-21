@@ -6,9 +6,14 @@ import 'package:desafio_2/core/app_colors.dart';
 import 'package:desafio_2/core/app_textstyle.dart';
 import 'package:flutter/material.dart';
 
-class ScreenFavorited extends StatelessWidget {
+class ScreenFavorited extends StatefulWidget {
   const ScreenFavorited({Key? key}) : super(key: key);
 
+  @override
+  _ScreenFavoritedState createState() => _ScreenFavoritedState();
+}
+
+class _ScreenFavoritedState extends State<ScreenFavorited> {
   @override
   Widget build(BuildContext context) {
     MovieFavoritedController controller = MovieFavoritedController();
