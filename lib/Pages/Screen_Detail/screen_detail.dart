@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:desafio_2/Pages/Screen_Detail/widgets/error_widget.dart';
+import 'package:desafio_2/Utils/convert_date.dart';
 import 'package:desafio_2/core/app_textstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:desafio_2/Pages/Screen_Detail/JsonType/movie_detail.dart';
@@ -68,7 +69,7 @@ class _ScreenDetailState extends State<ScreenDetail> {
                             title: snapShot.data!.title,
                           ),
                           SubTitle(
-                            subTitle: snapShot.data!.date,
+                            subTitle: convertDate(snapShot.data!.date),
                           )
                         ],
                       ),
