@@ -69,7 +69,7 @@ class _ScreenDetailState extends State<ScreenDetail> {
                             title: snapShot.data!.title,
                           ),
                           SubTitle(
-                            subTitle: convertDate(snapShot.data!.date),
+                            subTitle: snapShot.data!.date != '' ? convertDate(snapShot.data!.date): '',
                           )
                         ],
                       ),
